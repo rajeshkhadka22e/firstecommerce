@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %} {% block title %}Home - E-Shop{% endblock %} 
+
+{% block content %}
+<div class="w-[80%] m-auto bg-red-300">
+    <div class="w-[100%] flex flex-wrap gap-8">
+        {% for product in products %}
+        <div class="bg-white" style="width: 31.8%;">
+            <div class="h-64">
+               <img class="h-full bg-red-100 w-full object-cover" src="{{product.imageURL}}" alt="">
+            </div>
+            <div class="w-[90%] px-3">
+                <h6 class="py-2 text-xl border-b-2 capitalize">{{product.name}}</h6>
+                <div class="flex justify-between items-center">
+                    <div class="py-2 flex gap-3">
+                        <a href="" class="p-2 border-2 hover:bg-gray-500">Add to Cart</a>
+                        <a href="#" class="p-2 border-2">View</a>
+                    </div>
+                    <h3 class="flex">$ <p>{{product.price|floatformat:2}}</p></h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

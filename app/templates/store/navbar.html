@@ -1,0 +1,59 @@
+<!-- templates/navbar.html -->
+<nav class="bg-white sm:text-center sm:justify-center sm:items-center text-gray-700 fixed-top w-full z-50 shadow-lg">
+    <div class="w-[90%] mx-auto py-3 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <!-- Logo/Brand Name -->
+                <div class=" sm:flex-shrink-0 md:flex items-center text-xl font-bold">
+                  <a href="/">
+                    <span class="text-black">E</span>
+                    <span class="text-gray-500 px-2">Shop</span>
+                   
+                  </a>
+                  <a href="{% url 'shop' %}">store</a>
+                </div>
+
+               
+            </div>
+
+            <div class="hidden lg:flex space-x-8 items-center  nav">
+                <!-- Navigation Links -->
+                <!-- <a href="" class="text-purple-500 font-medium">Home</a>
+                <a href="{% url "shop" %}" class=" font-medium">Shop</a>
+                <a href="{% url "about" %}" class="font-medium">About us</a>
+                <a href="{% url "contact" %}" class= "font-medium">Contact</a> -->
+                <a href="#" class= "font-medium">login</a>
+                <a href="{% url 'store' %}"  class= "font-medium"><i class="fa-solid fa-basket-shopping"></i></a>
+
+            </div>
+
+            
+
+            <!-- Hamburger Menu Button for Mobile -->
+            <div class="flex items-center lg:hidden">
+                <button id="mobile-menu-button"
+                    class="inline-flex items-center justify-center p-2 rounded-md  hover:bg-gray-100 focus:outline-none">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden text-white bg-black text-center ">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <!-- <a href="" class="block text-lg font-medium ">Home</a>
+            <a href="{% url 'shop' %}" class="block text-lg font-medium ">Shop</a>
+            <a href="{% url 'about' %}" class="block text-lg font-medium ">About us</a>
+            <a href="{% url 'contact' %}" class="block text-lg font-medium ">Contact</a> -->
+            <a href="#"  class="block text-lg font-medium ">Login</a>
+            <a href="{% url 'store' %}"  class="block text-lg font-medium "><i class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+    </div>
+</nav> 
+<!-- JavaScript for mobile menu toggle -->

@@ -1,0 +1,68 @@
+{% extends 'store/base.html' %} {% load static %}
+{% block title %}store{% endblock %}
+{% block content %}
+<div class="w-[83%] m-auto">
+  <div class="bg-red-200 w-[100%] gap-5 flex border-2">
+    <div class="w-1/2 bg-green-200 p-3">
+      <div class="flex gap-2 max-w-[100%]">
+        <input type="text" class="w-1/2 p-3" placeholder="Name" required />
+        <input type="email" class="w-1/2 p-3" placeholder="Email" required />
+      </div>
+      <br />
+      <h5 class="text-black opacity-70">Shippings information:</h5>
+      <div class="w-[100%] gap-2">
+        <div class="flex gap-2 max-w-[100%] mt-3">
+          <input type="text" class="w-1/2 p-3" placeholder="Address" required />
+          <input type="email" class="w-1/2 p-3" placeholder="City" required />
+        </div>
+        <div class="flex gap-2 max-w-[100%] mt-3">
+          <input type="text" class="w-1/2 p-3" placeholder="Zipcode" required />
+          <input type="email" class="w-1/2 p-3" placeholder="Address" required />
+        </div>
+        <div class="flex gap-2 max-w-[100%] mt-3">
+          <input type="text" class="w-1/2 p-3" placeholder="City" required />
+          <input type="email" class="w-1/2 p-3" placeholder="Zipcode" required />
+        </div>
+      </div>
+      <div class="bg-green-400 text-white py-2 text-center items-center p-3 mt-3">
+        <a href="">continue</a>
+      </div>
+    </div>
+    <div class="w-1/2 bg-white text-black shadow-2xl">
+      <a class="p-3 border inline-block mb-3" href="{% url 'store' %}"><-- Back to Cart</a>
+          <hr />
+          <div class="p-2">
+            <h4 class="text-xl font-bold mb-4">Order Summery</h4>
+            {% for item  in items %}
+
+            <div class="grid grid-cols-12 gap-2 mb-1 border-b-2 items-center">
+              <div class="col-span-4 p-4">
+                <img class="object-fill" src="{{item.product.imageURL}}" alt="Example Image" />
+              </div>
+              <div class="col-span-4 p-4">
+                <h3><strong>{{item.product.name}}</strong></h3>
+              </div>
+              <div class="col-span-2 p-4">
+                <h3>$<strong>{{item.product.price}}</strong></h3>
+              </div>
+              <div class="col-span-2 p-4">
+                <h3 class="flex gap-2">
+                  <strong>{{item.quantity}}</strong>
+                </h3>
+              </div>
+            </div>
+            {% endfor %}
+            <th>
+              <h5>Items : <strong>{{order.get_cart_items}}</strong></h5>
+            </th>
+            <th>
+              <h5>Total : $<strong>{{order.get_cart_total|floatformat:2}}</strong></h5>
+            </th>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

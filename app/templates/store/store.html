@@ -1,0 +1,70 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}store{% endblock %}
+{% block content %}
+<div class="py-4 w-[75%] justify-center ">
+    <div class="bg-white shadow-lg p-5 w-full">
+        <div class="m-2 border inline-block mb-4">
+            <a href="{% url 'shop' %}" class="p-2"> continue shopping</a>
+        </div>
+      <hr>
+        <div class="mt-2 flex justify-between items-center">
+            <tr class="flex ">
+                <th><h5>Items : <strong>{{order.get_cart_items}}</strong></h5></th>
+                <th><h5>Total : $<strong>{{order.get_cart_total}}</strong></h5></th>
+               
+            </tr>
+            <a href="{% url 'checkout' %}" class="bg-green-400 p-3 border">Checkout</a>
+        </div>
+    </div>
+</div>
+
+<div class="w-[75%] bg-white shadow-lg pt-2  mt-4 pb-3 m-auto">
+    <div class="grid grid-cols-12 gap-2 mb-1 border-b-2 ">
+        <div class="col-span-3 p-4">
+            <h3></h3>
+        </div>
+        <div class="col-span-3 p-4">
+            <h3><strong>Items</strong></h3>
+        </div>
+        <div class="col-span-2  p-4">
+            <h3><strong>price</strong></h3>
+        </div>
+        <div class="col-span-2 p-4">
+            <h3><strong>Quantity</strong></h3>
+        </div>
+        <div class="col-span-2 p-4">
+            <h3><strong>Total</strong></h3>
+        </div>
+    </div>
+    {% for item in items %}
+    <div class="grid grid-cols-12 gap-2 mb-1 border-b-2  items-center">
+        <div class="col-span-3 p-4">
+            <img class="object-fill " src="{{item.product.imageURL}}" alt="Example Image">
+        </div>
+        <div class="col-span-3 p-4">
+            <h3><strong>{{item.product.name}}</strong></h3>
+        </div>
+        <div class="col-span-2  p-4">
+            <h3>$<strong>{{item.product.price|floatformat:2}}</strong></h3>
+        </div>
+        <div class="col-span-2 p-4 ">
+            <h3 class="flex gap-2 ">
+                <strong>{{item.quantity}}</strong>
+                <div class="flex flex-col p-0 m-0">
+                    <i class="  fa-solid fa-sort-up inline-block"></i>
+                    <i class="  fa-solid fa-sort-down inline-block"></i>
+                </div>
+            </h3>
+        </div>
+        <div class="col-span-2 p-4">
+            <h3>$<strong>{{items.get_total}}</strong></h3>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock content %}
